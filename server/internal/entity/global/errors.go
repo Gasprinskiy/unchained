@@ -1,6 +1,9 @@
 package global
 
-import "errors"
+import (
+	"errors"
+	"net/http"
+)
 
 var (
 	// ErrNoData данные не найдены"
@@ -14,3 +17,15 @@ var (
 	// ErrExpired время вышло
 	ErrExpired = errors.New("Expired")
 )
+
+var ErrStatusCodes = map[error]int{
+	ErrNoData:           http.StatusNotFound,
+	ErrInternalError:    http.StatusInternalServerError,
+	ErrPermissionDenied: http.StatusUnauthorized,
+	ErrInvalidParam:     http.StatusBadRequest,
+	ErrExpired:          http.StatusGone,
+	// ErrInvalidLoginOrPassword: http.StatusUnauthorized,
+	// ErrUserAllreadyExists:     http.StatusConflict,
+	// ErrNotAllowedToUse:        http.StatusUnauthorized,
+	// ErrExpiredSesstion:        http.StatusUnauthorized,
+}

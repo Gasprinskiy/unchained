@@ -1,4 +1,4 @@
-package jwt_auth
+package auth
 
 import (
 	"strings"
