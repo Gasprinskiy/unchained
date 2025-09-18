@@ -45,7 +45,6 @@ func (hook *PostgresHook) Fire(entry *logrus.Entry) error {
 	// 	return fmt.Errorf("tg_id имеет неподдерживаемый тип: %T", tgIDValue)
 	// }
 
-	// Копируем всё кроме tg_id в additional_fields
 	additionalFields := make(logrus.Fields)
 	for k, v := range data {
 		additionalFields[k] = v

@@ -2,19 +2,18 @@ package rimport
 
 import (
 	"unchained/server/config"
+	"unchained/server/internal/repository"
 
 	"github.com/redis/go-redis/v9"
-	"google.golang.org/grpc"
 )
 
-type RepositoryImports struct {
-	Repository
+type Repository struct {
+	AuthCache repository.AuthCache
 }
 
 func NewRepositoryImports(
-	grpcConn *grpc.ClientConn,
 	config *config.Config,
 	rdb *redis.Client,
-) *RepositoryImports {
-	return &RepositoryImports{}
+) *Repository {
+	return &Repository{}
 }

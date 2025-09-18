@@ -1,7 +1,10 @@
 package gateway
 
-import "unchained/server/internal/entity/sms"
+import (
+	"context"
+	"unchained/server/internal/entity/sms"
+)
 
 type Sms interface {
-	SendVirifyCode(params sms.SendVirifyCodeParams) error
+	SendVirifyCode(ctx context.Context, params sms.SendVirifyCodeParams) error
 }

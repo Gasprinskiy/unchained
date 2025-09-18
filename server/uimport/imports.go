@@ -1,22 +1,24 @@
 package uimport
 
 import (
+	"unchained/server/config"
+	"unchained/server/gimport"
+	"unchained/server/internal/usecase"
 	"unchained/server/rimport"
 	"unchained/server/tools/logger"
 )
 
-type UsecaseImport struct {
-	Usecase
+type Usecase struct {
+	Auth *usecase.Auth
 }
 
 func NewUsecaseImport(
-	ri *rimport.RepositoryImports,
+	ri *rimport.Repository,
+	ge *gimport.Getaway,
 	log *logger.Logger,
-) *UsecaseImport {
-	return &UsecaseImport{
-		Usecase: Usecase{
-			// Payme: usecase.NewPayme(ri, log),
-			// Kicker: usecase.NewKicker(log, ri),
-		},
+	conf *config.Config,
+) *Usecase {
+	return &Usecase{
+		Auth: usecase.NewAuth(ri, ge, log, conf),
 	}
 }

@@ -2,5 +2,12 @@ package sms
 
 type SendVirifyCodeParams struct {
 	PhoneNumber string
-	Code        int64
+	Code        string
+}
+
+func NewSendVirifyCodeParams(phoneNumber, code string) SendVirifyCodeParams {
+	return SendVirifyCodeParams{
+		PhoneNumber: phoneNumber,
+		Code:        code,
+	}
 }
